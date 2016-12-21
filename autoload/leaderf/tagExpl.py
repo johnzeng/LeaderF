@@ -32,6 +32,8 @@ class TagExplorer(Explorer):
                 # if the tag file is large , the loading will take a long time  
                 lines = f.readlines()
                 for i, line in enumerate(lines):
+                    if line.startswith("!_TAG_"):
+                        continue
                     tag = line.split("\t")[0]
                     if tag not in self._duplicate_tags:
                         tag_list.append(tag)
